@@ -1,0 +1,37 @@
+import names from '../../datas/names'
+
+
+function Zeit({ name, firstname }) {
+  return <div>{name} stars: {firstname}</div>
+}
+
+// 最初に実行される。事前ビルドするパスを配列でreturnする。
+export async function getStaticPaths() {
+  // レポジトリの名前をパスとする
+  console.log(names)
+  // const paths = names.map(name => `/components/${name}`)
+  // for (let name in names) {
+  //   console.log(name)
+  //   const path = `/components/${name}`
+  //   const paths
+  //   return { paths, fallback: false }
+  // }
+
+  for (key in names) {
+    if (names.hasOwnProperty(key)) {
+
+    }
+  }
+  // 事前ビルドしたいパスをpathsとして渡す fallbackについては後述
+}
+
+// ルーティングの情報が入ったparamsを受け取る
+export async function getStaticProps({ params }) {
+  // ファイル名のzeit/[name].jsに対応
+  const name = params.name
+  const firstname = names[name].first_name_jp
+
+  return { props: { name, firstname } }
+}
+
+export default Zeit
