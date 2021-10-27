@@ -14,6 +14,34 @@ const theme = createTheme({
       main: red.A400,
     },
   },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+      'LimoneB',
+    ].join(','),
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+      @font-face {
+        font-family: 'LimoneB';
+        font-style: normal;
+        font-display: swap;
+        font-weight: 400;
+        src: url('/fonts/LIMONEB.TTF') ;
+      }
+    `,
+    },
+  },
 });
 
 export default theme;
