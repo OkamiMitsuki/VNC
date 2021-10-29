@@ -1,0 +1,65 @@
+
+.PrfGrid {
+  margin: 0 auto;
+  width: 80%;
+  height: 32vh;
+  max-height: 240px;
+  display: grid;
+  gap: 2px;
+  grid-template:
+  "PrfImg     Rubi        OsiMark"    min(4vh, 24px)
+  "PrfImg     Name        OsiMark"    min(8vh, 42px)
+  "PrfImg     LinkBar     LinkBar"    16px
+  "PrfImg     PrfButtons  PrfButtons" 2fr/
+  40%         50%         10%;
+  }
+  .PrfImg img{
+    width: auto;
+    height: 100%;
+}
+.PrfImg { 
+  grid-area: PrfImg;
+  /* background: #f88;  */
+}
+.Rubi {
+   grid-area: Rubi; 
+   font-weight: bold;
+   align-items: center;
+   font-size: min(4vh, 24px);
+   line-height: min((4vh*0.85), 24px);
+  }
+.Name {
+   grid-area: Name;
+   font-weight: bold;
+   align-items: center;
+   font-size: min(8vh, 42px);
+   line-height: min((8vh*0.85), 42px);
+}
+.OsiMark {
+   grid-area: OsiMark; 
+   background: #88f;
+   font-size: min(12vh, 66px);
+   line-height: min((12vh*0.85), 66px);
+  }
+.PrfButtons {
+   grid-area: PrfButtons;
+   font-size: 1.2rem;
+   display: flex;
+   flex-wrap: wrap;
+  }
+.LinkBar {
+   grid-area: LinkBar; 
+   background:rgba(0, 0, 0, 0.05);
+   border-radius: 4px;
+  }
+
+.PrfTxt {
+  font-family: LimoneB;
+  font-style: normal;
+  height: 100%;
+  font-size: 0.85em;
+  color: #354243;
+
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  margin: 0.15em 8px;
+}

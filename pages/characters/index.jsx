@@ -3,20 +3,22 @@ import Head from "next/dist/shared/lib/head";
 import Nav_bar from "../../components/Nav_bar/Nav_bar";
 import Profile_Box from "../../components/Profile_Box/Profile_Box";
 import { makeStyles } from "@material-ui/core";
+import Styles from '../../public/css/style.module.css'
 
 
 export default function Home() {
   return (
-    <div className="container">
+    <div className="Styles.Container">
       <Head>
         <title>LamyButton</title>
         <link rel="icon" href="/favicon.ico" />
+        <style>{'body { background: url(/patern.png)}'}</style>
       </Head>
-
-      <h1>Lamy</h1>
-      <Nav_bar></Nav_bar>
-      <MenuList></MenuList>
-      <Profile_Box></Profile_Box>
+      <div className={Styles.ButtonBody}>
+        <Nav_bar />
+        <MenuList />
+        <Profile_Box />
+      </div>
     </div>
   )
 }

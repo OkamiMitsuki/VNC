@@ -4,14 +4,24 @@ import { red } from '@mui/material/colors';
 // Create a theme instance.
 const theme = createTheme({
   palette: {
+    type: 'light',
     primary: {
-      main: '#556cd6',
+      main: '#b2e0ee',
     },
     secondary: {
-      main: '#19857b',
+      main: '#eec0b2',
     },
     error: {
-      main: red.A400,
+      main: '#eeb2e0',
+    },
+    warning: {
+      main: '#eeb2e0',
+    },
+    info: {
+      main: '#b2c2ee',
+    },
+    success: {
+      main: '#b2eede',
     },
   },
   typography: {
@@ -28,6 +38,11 @@ const theme = createTheme({
       '"Segoe UI Symbol"',
       'LimoneB',
     ].join(','),
+    button: {
+      letterSpacing: '0.07em',
+      lineHeight: 0.86,
+      fontSize: '0.8rem',
+    },
   },
   components: {
     MuiCssBaseline: {

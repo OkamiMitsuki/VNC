@@ -1,10 +1,8 @@
 export const names = {
   "lamy": {
     "nicname": "Lamy",
-    "first_name_en": "Yukihana",
-    "first_name_jp": "雪花",
-    "last_name_en": "Lamy",
-    "last_name_jp": "ラミィ",
+    "ENname": "Yukihana  Lamy",
+    "JPname": "雪花  ラミィ",
     "mark": "⛄",
     "youtube": "https://www.youtube.com/channel/UCFKOVgVbGmX65RxO3EtH3iw?sub_confirmation=1",
     "twitter": "https://twitter.com/yukihanalamy",

@@ -1,12 +1,18 @@
+import GetPrfImg from "./GetPrfImg"
 import GetPrf from "./GetPrf"
+import PrfButtons from "./test"
+import PrfLinks from "./PrfLinks"
+import Styles from '../../public/css/style.module.css'
+
 const Profile_Box = () => {
   return (
-    <div>
-      <ul>
-        <li> <GetPrf txt={`first_name_en`} /> <GetPrf txt={`last_name_en`} /> </li>
-        <li> <GetPrf txt={`first_name_jp`} /> <GetPrf txt={`last_name_jp`} /> </li>
-      </ul>
-      <GetPrf txt={`mark`} />
+    <div className={Styles.PrfGrid}>
+      <div className={Styles.PrfImg}><GetPrfImg /></div>
+      <div className={Styles.Rubi}><GetPrf txt={`ENname`} /></div>
+      <div className={Styles.Name}><GetPrf txt={`JPname`} /></div>
+      <div className={Styles.OsiMark}><GetPrf txt={`mark`} /></div>
+      <div className={Styles.PrfButtons}><PrfButtons /></div>
+      <div className={Styles.LinkBar}><PrfLinks /></div>
     </div>
   )
 }
