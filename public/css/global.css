@@ -1,0 +1,7 @@
+.rhap_progress-section{
+  display: none !important;
+}
+.rhap_additional-controls {
+  display: block !important;
+  -webkit-flex: 0 0 auto !important;
+}

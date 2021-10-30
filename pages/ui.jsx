@@ -1,22 +1,48 @@
-import { Button, ButtonGroup } from '@material-ui/core'
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons/faEllipsisV';
+import { faInfo } from '@fortawesome/free-solid-svg-icons/faInfo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import SvgIcon from '@mui/material/SvgIcon';
 
-export default function Home() {
+const FontAwesomeSvgIcon = React.forwardRef((props, ref) => {
+  const { icon } = props;
+
+  const {
+    icon: [width, height, , , svgPathData],
+  } = icon;
+
   return (
-    <>
-      <div style={{ margin: '0.5em' }}>
-        <Button variant="contained">Default</Button>{' '}
-        <Button variant="contained" color="primary">Primary</Button>{' '}
-        <Button variant="contained" color="secondary">Secondary</Button>{' '}
-        <Button variant="contained" disabled>Disabled</Button>{' '}
-        <Button variant="contained" color="primary" href="https://google.com/">LINK</Button>
-      </div>
-      <div style={{ margin: '0.5em' }}>
-        <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group">
-          <Button>One</Button>
-          <Button>Two</Button>
-          <Button>Three</Button>
-        </ButtonGroup>
-      </div>
-    </>
-  )
+    <SvgIcon ref={ref} viewBox={`0 0 ${width} ${height}`}>
+      {typeof svgPathData === 'string' ? (
+        <path d={svgPathData} />
+      ) : (
+        /**
+         * A multi-path Font Awesome icon seems to imply a duotune icon. The 0th path seems to
+         * be the faded element (referred to as the "secondary" path in the Font Awesome docs)
+         * of a duotone icon. 40% is the default opacity.
+         *
+         * @see https://fontawesome.com/how-to-use/on-the-web/styling/duotone-icons#changing-opacity
+         */
+        svgPathData.map((d, i) => (
+          <path style={{ opacity: i === 0 ? 0.4 : 1 }} d={d} />
+        ))
+      )}
+    </SvgIcon>
+  );
+});
+
+FontAwesomeSvgIcon.propTypes = {
+  icon: PropTypes.any.isRequired,
+};
+
+export default function FontAwesomeSvgIconDemo() {
+  return (
+    <IconButton aria-label="Example">
+      <FontAwesomeSvgIcon icon={faEllipsisV} />
+    </IconButton>
+  );
 }
