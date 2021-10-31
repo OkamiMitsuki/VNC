@@ -2,13 +2,12 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
-import GetVcData from './GspVcData';
 
 const ListItem = styled('li')(({ theme }) => ({
   margin: theme.spacing(0.5),
 }));
 
-export default function MakeVc() {
+function MakeVc({ VcData }) {
   return (
     <Paper
       sx={{
@@ -22,10 +21,10 @@ export default function MakeVc() {
       }}
       component="ul"
     >
-      {GetVcData.map((data) => {
+      {VcData.map((data) => {
         const handleClick = () => {
-          console.info({ data.ID });
-          console.info({ data.Src });
+          console.info({ ID: data.ID });
+          console.info({ Src: data.Src });
         };
         return (
           <div>
@@ -51,3 +50,14 @@ export default function MakeVc() {
     </Paper>
   );
 }
+
+export async function getStaticProps() {
+  const res = await fetch('http://localhost:3000/api/VcLamy');
+  const Vcdata = await res;
+  return {
+    props:
+      { Vcdata },
+  }
+}
+
+export default MakeVc

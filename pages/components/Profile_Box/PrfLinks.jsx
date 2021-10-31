@@ -1,4 +1,4 @@
-import { names } from "../../datas/names";
+import { names } from "../../../datas/names";
 import Stack from '@mui/material/Stack';
 
 const PrfLinks = (props) => {

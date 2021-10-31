@@ -1,8 +1,8 @@
 import GetPrfImg from "./GetPrfImg"
 import GetPrf from "./GetPrf"
-import PrfButtons from "./MakeVc"
+import PrfButtons from "./MakeVc.jsx.bk"
 import PrfLinks from "./PrfLinks"
-import Styles from '../../public/css/style.module.css'
+import Styles from '../../../public/css/style.module.css'
 
 const Profile_Box = () => {
   return (
