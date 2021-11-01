@@ -1,9 +1,11 @@
-import Styles from '../../../public/css/style.module.css'
+import ReferenceButton from "./ReferenceButton"
+import ReadonryTxtBox from "./ReadonryTxtBox"
 
 export default function VcUpLoadForm() {
   return (
-    <div className="Styles.VcUpLoadForm">
-      <p >VcUpLoadForm</p>
+    <div className="Styles.VcNameForm">
+      <ReadonryTxtBox />
+      <ReferenceButton />
     </div>
   )
 }

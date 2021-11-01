@@ -1,6 +1,6 @@
 import GetPrfImg from "./GetPrfImg"
 import GetPrf from "./GetPrf"
-import PrfButtons from "./MakeVc.jsx.bk"
+import PrfButtons from "../../MakeVc"
 import PrfLinks from "./PrfLinks"
 import Styles from '../../../public/css/style.module.css'
 

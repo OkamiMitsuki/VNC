@@ -27,8 +27,8 @@ function MakeVc({ VcData }) {
           console.info({ Src: data.Src });
         };
         return (
-          <div>
-            <ListItem key={data.key}>
+          <div key={data.Title}>
+            <ListItem >
               <Chip
                 label={data.Title}
                 color="success"
@@ -41,9 +41,6 @@ function MakeVc({ VcData }) {
                 }}
               />
             </ListItem>
-            <VcButton title={"aaa"} src={"aa"} id={"a"} />
-            <VcButton title={"bbb"} src={"bb"} id={"b"} />
-            <VcButton title={"ccc"} src={"cc"} id={"c"} />
           </div>
         );
       })}
@@ -53,10 +50,12 @@ function MakeVc({ VcData }) {
 
 export async function getStaticProps() {
   const res = await fetch('http://localhost:3000/api/VcLamy');
-  const Vcdata = await res;
+  const VcData = await res.json();
+
+  console.log('getStaticProps called', { VcData });
   return {
     props:
-      { Vcdata },
+      { VcData },
   }
 }
 
