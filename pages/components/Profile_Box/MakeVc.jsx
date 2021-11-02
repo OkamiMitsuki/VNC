@@ -48,15 +48,4 @@ function MakeVc({ VcData }) {
   );
 }
 
-export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/api/VcLamy');
-  const VcData = await res.json();
-
-  console.log('getStaticProps called', { VcData });
-  return {
-    props:
-      { VcData },
-  }
-}
-
 export default MakeVc
