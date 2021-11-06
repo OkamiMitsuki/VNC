@@ -398,6 +398,11 @@
   "resolved" "https://registry.npmjs.org/@iconify/react/-/react-1.1.4.tgz"
   "version" "1.1.4"
 
+"@iconify/react@^3.0.1":
+  "integrity" "sha512-yUskSSR80JzRSWcqNsBAG9AN802XzZgHsex8mTOkMLYcPQC3fk1XwK17ulnY5vf692OafhGCAMccR8TWKFaGdw=="
+  "resolved" "https://registry.npmjs.org/@iconify/react/-/react-3.0.1.tgz"
+  "version" "3.0.1"
+
 "@material-ui/core@^4.12.3":
   "integrity" "sha512-sdpgI/PL56QVsEJldwEe4FFaFTLUqN+rd7sSZiRCdx2E/C7z5yK0y/khAWVBH24tXwto7I1hCzNWfJGZIYJKnw=="
   "resolved" "https://registry.npmjs.org/@material-ui/core/-/core-4.12.3.tgz"

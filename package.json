@@ -24,6 +24,7 @@
     "react-hook-form": "^7.18.0"
   },
   "devDependencies": {
+    "@iconify/react": "^3.0.1",
     "@types/node": "^16.11.5",
     "@types/react": "^17.0.32",
     "swr": "^1.0.1",

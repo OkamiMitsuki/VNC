@@ -3,10 +3,22 @@ import Head from "next/dist/shared/lib/head";
 import Nav_bar from "../components/Nav_bar/Nav_bar";
 import Profile_Box from "../components/Profile_Box/Profile_Box";
 import Styles from '../../public/css/style.module.css'
-import PlayList from '../PlayList'
 
+// 'getStaticProps' only works in 'Page' components. It doesn't work in 'Layout' components.
+// So we fetch the data here and pass the props down to 'MakeVc'
+export async function getStaticProps() {
+  const res = await fetch('http://localhost:3000/api/VcLamy');
+  const VcData = await res.json();
 
-export default function Home() {
+  // This message will be output to the terminal window where we run 'npm run dev'
+  console.log('getStaticProps called', { VcData });
+  return {
+    props:
+      { VcData },
+  }
+}
+
+export default function Home({ VcData }) {
   return (
     <div className="Styles.Container">
       <Head>
@@ -17,8 +29,8 @@ export default function Home() {
       <div className={Styles.ButtonBody}>
         <Nav_bar />
         <MenuList />
-        <Profile_Box />
-        <PlayList />
+        <Profile_Box VcData={VcData} />
+
       </div>
     </div>
   )
