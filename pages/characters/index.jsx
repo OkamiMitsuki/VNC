@@ -3,6 +3,7 @@ import Head from "next/dist/shared/lib/head";
 import Nav_bar from "../components/Nav_bar/Nav_bar";
 import Profile_Box from "../components/Profile_Box/Profile_Box";
 import Styles from '../../public/css/style.module.css'
+import { VcDataProvider } from '../VcDataConText'
 
 // 'getStaticProps' only works in 'Page' components. It doesn't work in 'Layout' components.
 // So we fetch the data here and pass the props down to 'MakeVc'
@@ -28,9 +29,10 @@ export default function Home({ VcData }) {
       </Head>
       <div className={Styles.ButtonBody}>
         <Nav_bar />
-        <MenuList />
-        <Profile_Box VcData={VcData} />
-
+        <VcDataProvider VcData={VcData} >
+          <MenuList />
+          <Profile_Box VcData={VcData} />
+        </VcDataProvider>
       </div>
     </div>
   )
