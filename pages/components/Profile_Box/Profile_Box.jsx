@@ -3,7 +3,6 @@ import GetPrf from "./GetPrf"
 import PrfButtons from "./MakeVc"
 import PrfLinks from "./PrfLinks"
 import Styles from '../../../public/css/style.module.css'
-import { useVcDataContext } from '../../VcDataConText'
 
 const Profile_Box = ({ VcData }) => {
   // const { VcState, SetVcState } = useVcDataContext();
