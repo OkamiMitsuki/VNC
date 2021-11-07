@@ -11,13 +11,25 @@ const ListItem = styled('li')(({ theme }) => ({
 function MakeVc({ VcData }) {
   const [VcState, SetVcState] = useState({
     VcData: VcData,
-    ExLoop: 0,
     currentMusicIndex: 0,
   });
+  console.log("State:Index:", VcState.currentMusicIndex)
+  // // PlayList用ステート書き換え関数
+  // // 前の曲へ　戻るボタンが押された時
+  // const handleClickPrevious = () => {
+  //   const IsVcState = () => {
+  //     currentMusicIndex === 0 ? VcData.length - 1 : currentMusicIndex - 1
+  //   }
+  //   SetVcState({ ...VcState, currentMusicIndex: IsVcState })
+  // }
+  // // 次の曲へ　次へボタンが押される　か　Loopモードが1の時で曲が終了した時
+  // const handleClickNext = () => {
+  //   const IsVcState = () => {
+  //     currentMusicIndex < VcData.length - 1 ? VcData.length + 1 : 0
+  //   }
+  //   SetVcState({ ...VcState, currentMusicIndex: IsVcState })
+  // }
 
-  const ChangeState = (IsVcState) => {
-    SetVcState(IsVcState);
-  }
   return (
     <div>
       <Paper
@@ -56,7 +68,7 @@ function MakeVc({ VcData }) {
           );
         })}
       </Paper>
-      <PlayList VcData={VcData} VcState={VcState} ChangeState={ChangeState} />
+      <PlayList VcData={VcData} VcState={VcState} SetVcState={SetVcState} />
     </div>
   );
 }

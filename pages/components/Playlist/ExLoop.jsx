@@ -3,7 +3,6 @@ import { Icon } from '@iconify/react';
 import IconButton from '@mui/material/IconButton';
 
 const ExLoopButton = (props) => {
-  console.log({ state: props.LoopType })
   switch (props.LoopType) {
     case 0:
       return (
