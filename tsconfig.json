@@ -23,7 +23,8 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/components/[name].jsx_bk",
-    "pages/_app.jsx"
+    "pages/_app.jsx",
+    "pages/components/Playlist/PlayList function.jsx"
   ],
   "exclude": [
     "node_modules"

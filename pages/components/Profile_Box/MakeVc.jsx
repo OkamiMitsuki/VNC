@@ -3,13 +3,21 @@ import { styled } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
 import { useState } from 'react';
-import PlayList from '../Playlist/PlayList'
+import PlayList from '../Playlist/PlayList function'
 
 const ListItem = styled('li')(({ theme }) => ({
   margin: theme.spacing(0.5),
 }));
 function MakeVc({ VcData }) {
-  const [IsVcID, SetVcID] = useState(0);
+  const [VcState, SetVcState] = useState({
+    VcData: VcData,
+    ExLoop: 0,
+    currentMusicIndex: 0,
+  });
+
+  const ChangeState = (IsVcState) => {
+    SetVcState(IsVcState);
+  }
   return (
     <div>
       <Paper
@@ -26,8 +34,8 @@ function MakeVc({ VcData }) {
       >
 
         {VcData.map((data) => {
-          const handleClick = () => {
-            SetVcID(data.ID);
+          const ChangeCurrentMusicIndex = () => {
+            SetVcState({ ...VcState, currentMusicIndex: data.ID });
           }
           return (
             <div key={data.Title}>
@@ -36,7 +44,7 @@ function MakeVc({ VcData }) {
                   label={data.Title}
                   color="success"
                   size="small"
-                  onClick={handleClick}
+                  onClick={ChangeCurrentMusicIndex}
                   sx={{
                     margin: "2px",
                     height: "o.8em",
@@ -48,7 +56,7 @@ function MakeVc({ VcData }) {
           );
         })}
       </Paper>
-      <PlayList VcData={VcData} VcID={IsVcID} />
+      <PlayList VcData={VcData} VcState={VcState} ChangeState={ChangeState} />
     </div>
   );
 }
