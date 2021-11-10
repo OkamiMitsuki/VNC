@@ -2,34 +2,58 @@
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import Styles from '../../../public/css/style.module.css'
-import React, { Component, useState } from 'react'
+import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react'
 import ExLoopButton from './ExLoop'
 
+//ボイスが置かれているディレクトリを指定
 const Vc_directory = "/Lamy/"
-const PlayList = (props) => {
+
+// メイン処理開始
+const PlayList = React.forwardRef((props, ref) => {
   const [ExLoop, SetExLoop] = useState(0);
   // stateを展開
   const VcState = props.VcState;
   const currentMusicIndex = VcState.currentMusicIndex;
   const VcData = VcState.VcData;
   const SetVcState = props.SetVcState;
+
+  //Playerの制御情報取得
+  const player = useRef();
+  const Start = () => { player.current.audio.current.play() }
+  useImperativeHandle(ref, () => ({
+    play: () => {
+      player.current.Start;
+    }
+  }));
+
   // PlayList用ステート書き換え関数
   // 前の曲へ　戻るボタンが押された時
-  const handleClickPrevious = () => {
+  const handleClickPrevious = async (mes) => {
     let IsVcState =
       currentMusicIndex === 0 ? VcData.length - 1 : currentMusicIndex - 1;
-    SetVcState({ ...VcState, currentMusicIndex: IsVcState })
+    await SetVcState({ ...VcState, currentMusicIndex: IsVcState })
+    player.current.audio.current.play();
+    return `result_${mes}`
   }
   // 次の曲へ　次へボタンが押される　か　Loopモードが1の時で曲が終了した時
-  const handleClickNext = () => {
+  const handleClickNext = async (mes) => {
     let IsVcState =
       currentMusicIndex < VcData.length - 1 ? currentMusicIndex + 1 : 0;
-    SetVcState({ ...VcState, currentMusicIndex: IsVcState })
+    await SetVcState({ ...VcState, currentMusicIndex: IsVcState })
+    player.current.audio.current.play();
+    return `result_${mes}`
   }
-  // リピート再生　ループモードが2の時
+
+  // ループモードの変更ループボタンが押された時
   const LoopNext = () => {
-    SetExLoop(ExLoop < 1 ? ExLoop + 1 : 0);
+    SetExLoop(ExLoop < 2 ? ExLoop + 1 : 0);
   }
+  // 1曲のループ
+  const OneLoop = () => {
+    player.current.audio.current.play();
+  }
+
+
   console.log("PlayerIndex:", currentMusicIndex)
   if (ExLoop == 0) {
     return (
@@ -37,6 +61,7 @@ const PlayList = (props) => {
         <p>Index: {currentMusicIndex}</p>
         <p>Name: {VcData[currentMusicIndex]["Title"]}</p>
         <AudioPlayer
+          ref={player}
           style={{
             width: '300px'
           }}
@@ -81,6 +106,7 @@ const PlayList = (props) => {
               <ExLoopButton onClick={LoopNext} LoopType={ExLoop} />,
             ]
           }
+          ref={player}
         />
       </div>
     )
@@ -89,7 +115,7 @@ const PlayList = (props) => {
     return (
       <div className={Styles.PlayList}>
         <p>Index: {currentMusicIndex}</p>
-        <p>Name: {ExLoop}</p>
+        <p>Name: {VcData[currentMusicIndex]["Title"]}</p>
         <AudioPlayer
           style={{
             width: '300px'
@@ -103,12 +129,13 @@ const PlayList = (props) => {
           src={Vc_directory + VcData[currentMusicIndex]["Src"]}
           onClickPrevious={handleClickPrevious}
           onClickNext={handleClickNext}
-          // onEnded={this.FauseLoop}
+          onEnded={OneLoop}
           customAdditionalControls={
             [
               <ExLoopButton onClick={LoopNext} LoopType={ExLoop} />,
             ]
           }
+          ref={player}
         />
       </div>
     )
@@ -120,6 +147,6 @@ const PlayList = (props) => {
 
   }
 
-}
+});
 
 export default PlayList

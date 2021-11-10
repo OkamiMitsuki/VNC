@@ -3,7 +3,8 @@ import { styled } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
 import { useState } from 'react';
-import PlayList from '../Playlist/PlayList function'
+import PlayList from '../Playlist/PlayList'
+import { useRef } from 'react';
 
 const ListItem = styled('li')(({ theme }) => ({
   margin: theme.spacing(0.5),
@@ -13,22 +14,9 @@ function MakeVc({ VcData }) {
     VcData: VcData,
     currentMusicIndex: 0,
   });
-  console.log("State:Index:", VcState.currentMusicIndex)
-  // // PlayList用ステート書き換え関数
-  // // 前の曲へ　戻るボタンが押された時
-  // const handleClickPrevious = () => {
-  //   const IsVcState = () => {
-  //     currentMusicIndex === 0 ? VcData.length - 1 : currentMusicIndex - 1
-  //   }
-  //   SetVcState({ ...VcState, currentMusicIndex: IsVcState })
-  // }
-  // // 次の曲へ　次へボタンが押される　か　Loopモードが1の時で曲が終了した時
-  // const handleClickNext = () => {
-  //   const IsVcState = () => {
-  //     currentMusicIndex < VcData.length - 1 ? VcData.length + 1 : 0
-  //   }
-  //   SetVcState({ ...VcState, currentMusicIndex: IsVcState })
-  // }
+
+  //Playerの制御情報取得
+  const Players = useRef(null);
 
   return (
     <div>
@@ -48,6 +36,7 @@ function MakeVc({ VcData }) {
         {VcData.map((data) => {
           const ChangeCurrentMusicIndex = () => {
             SetVcState({ ...VcState, currentMusicIndex: data.ID });
+            console.log(Players.current)
           }
           return (
             <div key={data.Title}>
@@ -68,7 +57,7 @@ function MakeVc({ VcData }) {
           );
         })}
       </Paper>
-      <PlayList VcData={VcData} VcState={VcState} SetVcState={SetVcState} />
+      <PlayList ref={Players} VcState={VcState} SetVcState={SetVcState} />
     </div>
   );
 }
