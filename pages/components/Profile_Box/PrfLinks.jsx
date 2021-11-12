@@ -1,17 +1,16 @@
-import { names } from "../../../datas/names";
+import GetPrfLinks from "./GetPrfLinks";
 import Stack from '@mui/material/Stack';
+import Styles from '../../../public/css/style.module.css';
 
-const PrfLinks = (props) => {
+const PrfLinks = () => {
   return (
-    <Stack spacing={2} direction="row">
-      <a href={names.lamy.youtube} target="_blank" rel="noopener noreferrer">Youtube
-      </a>
-      <a href={names.lamy.twitter} target="_blank" rel="noopener noreferrer">Twitter
-      </a>
-      <a href={names.lamy.homepage} target="_blank" rel="noopener noreferrer">HP
-      </a>
-      <a href={names.lamy.wiki} target="_blank" rel="noopener noreferrer">Wiki
-      </a>
+    <Stack
+      direction="row"
+      justifyContent="space-around"
+      alignItems="center"
+      spacing={1}
+    >
+      <GetPrfLinks />
     </Stack>
   )
 }

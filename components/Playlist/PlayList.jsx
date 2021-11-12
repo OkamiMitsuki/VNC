@@ -1,7 +1,7 @@
 // https://github.com/lhz516/react-h5-audio-player
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import Styles from '../../../public/css/style.module.css'
+import Styles from '../../public/css/style.module.css'
 import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react'
 import ExLoopButton from './ExLoop'
 
@@ -58,12 +58,15 @@ const PlayList = React.forwardRef((props, ref) => {
   if (ExLoop == 0) {
     return (
       <div className={Styles.PlayList}>
-        <p>Index: {currentMusicIndex}</p>
-        <p>Name: {VcData[currentMusicIndex]["Title"]}</p>
+        <div className={Styles.PlayTitle}>
+          <p className={Styles.PlayTxt}>{currentMusicIndex}/{VcData.length}</p>
+          <p className={Styles.PlayTxt}>{VcData[currentMusicIndex]["Title"]}</p>
+        </div>
         <AudioPlayer
           ref={player}
           style={{
-            width: '300px'
+            width: '300px',
+            height: "60px"
           }}
           autoPlayAfterSrcChange={true}
           layout="horizontal-reverse"

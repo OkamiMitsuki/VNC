@@ -2,6 +2,7 @@ import GetPrfImg from "./GetPrfImg"
 import GetPrf from "./GetPrf"
 import PrfButtons from "./MakeVc"
 import PrfLinks from "./PrfLinks"
+import GetPrfLinks from "./GetPrfLinks";
 import Styles from '../../../public/css/style.module.css'
 
 const Profile_Box = ({ VcData }) => {
@@ -13,7 +14,7 @@ const Profile_Box = ({ VcData }) => {
       <div className={Styles.Name}><GetPrf txt={`JPname`} /></div>
       <div className={Styles.OsiMark}><GetPrf txt={`mark`} /></div>
       <div className={Styles.PrfButtons}><PrfButtons VcData={VcData} /></div>
-      <div className={Styles.LinkBar}><PrfLinks /></div>
+      <div className={Styles.LinkBar}><GetPrfLinks /></div>
       {/* <button onClick={() => SetVcState({ ...VcState, Track: + 1 })}>
         next track
       </button>

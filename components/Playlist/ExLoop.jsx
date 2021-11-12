@@ -1,4 +1,4 @@
-import Styles from '../../../public/css/style.module.css'
+import Styles from '../../public/css/style.module.css'
 import { Icon } from '@iconify/react';
 import IconButton from '@mui/material/IconButton';
 

@@ -9,7 +9,7 @@
   grid-template:
   "PrfImg     Rubi        OsiMark"    min(4vh, 24px)
   "PrfImg     Name        OsiMark"    min(8vh, 42px)
-  "PrfImg     LinkBar     LinkBar"    16px
+  "PrfImg     LinkBar     LinkBar"    24px
   "PrfImg     PrfButtons  PrfButtons" 2fr/
   40%         50%         10%;
   }
@@ -37,7 +37,8 @@
 }
 .OsiMark {
    grid-area: OsiMark; 
-   background: #88f;
+   display: flex;
+   justify-content: center;
    font-size: min(12vh, 66px);
    line-height: min((12vh*0.85), 66px);
   }
@@ -51,6 +52,10 @@
    grid-area: LinkBar; 
    background:rgba(0, 0, 0, 0.05);
    border-radius: 4px;
+  }
+  .Linkimg{
+    width: 16px;
+    height: 16px;
   }
 
 .PrfTxt {
@@ -66,12 +71,33 @@
 
 .PlayList {
  width: 300px;
+ height: 60px;
  position: fixed;
  bottom: 0px;
  left:50%;
  margin-left: -150px;
 }
+.PlayList svg{
+  width: 60%;
+ }
+ .rhap_container {
+   background-color: #88f;
+  padding: 3px 9px;
+ }
 
 .VcUpLoadForm{
   display: flex;
+}
+.PlayTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: #faffff;
+}
+.PlayTxt {
+  font-family: LimoneB;
+  color: #b2eebd0a;
+  text-shadow: 1px 0px 0px rgba(0, 0, 0, 0.25);
+  font-size: min(3vh, 18px);
+  margin: 0 0.3em;
 }

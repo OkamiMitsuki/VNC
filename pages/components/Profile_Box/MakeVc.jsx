@@ -3,13 +3,16 @@ import { styled } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
 import { useState } from 'react';
-import PlayList from '../Playlist/PlayList'
+import PlayList from '../../../components/Playlist/PlayList'
 import { useRef } from 'react';
+import { VcData } from '../../../datas/VcLamy'
 
+
+console.log(VcData);
 const ListItem = styled('li')(({ theme }) => ({
   margin: theme.spacing(0.5),
 }));
-function MakeVc({ VcData }) {
+const MakeVc = () => {
   const [VcState, SetVcState] = useState({
     VcData: VcData,
     currentMusicIndex: 0,
@@ -49,7 +52,7 @@ function MakeVc({ VcData }) {
                   sx={{
                     margin: "2px",
                     height: "o.8em",
-                    lineHeight: 0.8
+                    lineHeight: "1.0em",
                   }}
                 />
               </ListItem>

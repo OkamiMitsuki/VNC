@@ -5,3 +5,7 @@
   display: block !important;
   -webkit-flex: 0 0 auto !important;
 }
+.rhap_container {
+ padding: 0px 5px !important;
+ height: 35px !important;
+}
