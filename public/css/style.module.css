@@ -19,6 +19,7 @@
 }
 .PrfImg { 
   grid-area: PrfImg;
+  display: flex;
   /* background: #f88;  */
 }
 .Rubi {
