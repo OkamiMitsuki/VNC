@@ -6,5 +6,6 @@ export default function GetPrfImg() {
     autoPlay
     playsInline
     loop
-    src="/Lamy/idol.mp4" />;
+    src="/Lamy/idol.mp4"
+  />;
 }

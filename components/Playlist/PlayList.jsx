@@ -2,7 +2,7 @@
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import Styles from '../../public/css/style.module.css'
-import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react'
+import React, { useState, useRef } from 'react'
 import ExLoopButton from './ExLoop'
 
 //ボイスが置かれているディレクトリを指定
@@ -16,15 +16,15 @@ const PlayList = React.forwardRef((props, ref) => {
   const currentMusicIndex = VcState.currentMusicIndex;
   const VcData = VcState.VcData;
   const SetVcState = props.SetVcState;
+  const OnPlay = VcState.OnPlay;
 
   //Playerの制御情報取得
   const player = useRef();
-  const Start = () => { player.current.audio.current.play() }
-  useImperativeHandle(ref, () => ({
-    play: () => {
-      player.current.Start;
-    }
-  }));
+
+  if (1 <= OnPlay) {
+    player.current.audio.current.play();
+    SetVcState({ ...VcState, OnPlay: 0 })
+  }
 
   // PlayList用ステート書き換え関数
   // 前の曲へ　戻るボタンが押された時

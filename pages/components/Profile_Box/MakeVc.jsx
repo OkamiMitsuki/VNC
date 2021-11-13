@@ -4,7 +4,6 @@ import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
 import { useState } from 'react';
 import PlayList from '../../../components/Playlist/PlayList'
-import { useRef } from 'react';
 import { VcData } from '../../../datas/VcLamy'
 
 
@@ -16,10 +15,8 @@ const MakeVc = () => {
   const [VcState, SetVcState] = useState({
     VcData: VcData,
     currentMusicIndex: 0,
+    OnPlay: 0,
   });
-
-  //Playerの制御情報取得
-  const Players = useRef(null);
 
   return (
     <div>
@@ -37,9 +34,14 @@ const MakeVc = () => {
       >
 
         {VcData.map((data) => {
+          // クリックされた時の処理
           const ChangeCurrentMusicIndex = () => {
-            SetVcState({ ...VcState, currentMusicIndex: data.ID });
-            console.log(Players.current)
+            let state = VcState;
+            state.currentMusicIndex = data.ID;
+            state.OnPlay = state.OnPlay + 1;
+            SetVcState({ ...VcState, state });
+            console.log(state)
+            // SetVcState((state) => state = { ...VcState, OnPlay: 1 });
           }
           return (
             <div key={data.Title}>
@@ -60,7 +62,7 @@ const MakeVc = () => {
           );
         })}
       </Paper>
-      <PlayList ref={Players} VcState={VcState} SetVcState={SetVcState} />
+      <PlayList VcState={VcState} SetVcState={SetVcState} />
     </div>
   );
 }
