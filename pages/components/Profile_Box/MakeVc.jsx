@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import PlayList from '../../../components/Playlist/PlayList'
 import { VcData } from '../../../datas/VcLamy'
 
@@ -17,6 +17,9 @@ const MakeVc = () => {
     currentMusicIndex: 0,
     OnPlay: 0,
   });
+
+  // 子供のRef受け取り
+  const Play = useRef();
 
   return (
     <div>
@@ -36,12 +39,13 @@ const MakeVc = () => {
         {VcData.map((data) => {
           // クリックされた時の処理
           const ChangeCurrentMusicIndex = () => {
-            let state = VcState;
-            state.currentMusicIndex = data.ID;
-            state.OnPlay = state.OnPlay + 1;
-            SetVcState({ ...VcState, state });
-            console.log(state)
-            // SetVcState((state) => state = { ...VcState, OnPlay: 1 });
+            // let state = VcState;
+            // state.currentMusicIndex = data.ID;
+            // state.OnPlay = state.OnPlay + 1;
+            // SetVcState({ ...VcState, state });
+            SetVcState({ ...VcState, currentMusicIndex: data.ID });
+            Play.current.play();
+            console.log(Play.current)
           }
           return (
             <div key={data.Title}>
@@ -62,7 +66,7 @@ const MakeVc = () => {
           );
         })}
       </Paper>
-      <PlayList VcState={VcState} SetVcState={SetVcState} />
+      <PlayList VcState={VcState} SetVcState={SetVcState} ref={Play} />
     </div>
   );
 }
