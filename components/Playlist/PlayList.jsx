@@ -2,7 +2,7 @@
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import Styles from '../../public/css/style.module.css'
-import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import ExLoopButton from './ExLoop'
 import { VcData } from '../../datas/VcLamy'
 import Profile_Box from '../Profile_Box/Profile_Box';
@@ -12,7 +12,7 @@ import VcArea from '../VcArea';
 const Vc_directory = "/Lamy/"
 let LoopMode = null;
 // メイン処理開始
-const PlayList = React.forwardRef((props, ref) => {
+const PlayList = (props) => {
 
   // state宣言
   const [VcState, SetVcState] = useState({
@@ -30,6 +30,17 @@ const PlayList = React.forwardRef((props, ref) => {
     player.current.audio.current.currentTime = 0;
     player.current.audio.current.play();
   }
+
+  // ローカルストレージに保存
+  // useEffect(() => {
+  //   SetVcState(JSON.parse(window.localStorage.getItem('VcState')));
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem('VcState', JSON.stringify(VcState));
+  // }, [VcState]);
+
+  // console.log(VcState);
 
   // PlayList用ステート書き換え関数
   // 前の曲へ　戻るボタンが押された時
@@ -98,6 +109,6 @@ const PlayList = React.forwardRef((props, ref) => {
       </div>
     </div>
   )
-})
+}
 
 export default PlayList

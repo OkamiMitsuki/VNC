@@ -1,6 +1,6 @@
 
 .PrfGrid {
-  margin: 0 auto;
+  margin: 80px auto 16px;
   width: 80%;
   height: 32vh;
   max-height: 240px;
@@ -16,18 +16,19 @@
   .PrfImg img{
     width: auto;
     height: 100%;
+    
 }
 .PrfImg { 
   grid-area: PrfImg;
   display: flex;
-  /* background: #f88;  */
 }
 .Rubi {
    grid-area: Rubi; 
    font-weight: bold;
    align-items: center;
    font-size: min(4vh, 24px);
-   line-height: min((4vh*0.85), 24px);
+   line-height: min((4vh*0.85), 24px); 
+  padding-left: 16px;
   }
 .Name {
    grid-area: Name;
@@ -35,6 +36,7 @@
    align-items: center;
    font-size: min(8vh, 42px);
    line-height: min((8vh*0.85), 42px);
+   padding-left: 16px;
 }
 .OsiMark {
    grid-area: OsiMark; 
@@ -46,11 +48,14 @@
 .PrfButtons {
    grid-area: PrfButtons;
    font-size: 1.2rem;
+   height: 100%;
+   padding-left: 16px;
   }
 .LinkBar {
    grid-area: LinkBar; 
    background:rgba(0, 0, 0, 0.05);
    border-radius: 4px;
+   margin-left: 16px;
   }
   .Linkimg{
     width: 16px;
@@ -72,9 +77,8 @@
  width: 300px;
  height: 60px;
  position: fixed;
- bottom: 0px;
- left:50%;
- margin-left: -150px;
+ top:  0px;
+ left: 16px;
 }
 .PlayList svg{
   width: 60%;
@@ -91,12 +95,25 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  background-color: #faffff;
+  background-color: #ecf8ff;
 }
 .PlayTxt {
   font-family: LimoneB;
-  color: #b2eebd0a;
-  text-shadow: 1px 0px 0px rgba(0, 0, 0, 0.25);
-  font-size: min(3vh, 18px);
+  color: #7b7985f6;
+  text-shadow: 1px 0px 0px rgb(167, 183, 255);
+  font-size: min(2.5vh, 15px);
   margin: 0 0.3em;
+}
+.GetPrfImg{
+  width: 100%;
+}
+.VcArea{
+  width: 90%;
+  margin: 30px auto;
+  list-style: none;
+  font-size:  min(3vh, 18px);
+  font-family: LimoneB;
+}
+.Link{
+  list-style: none;
 }

@@ -27,9 +27,9 @@ export default function Home() {
         <style>{'body { background: url(/patern.png)}'}</style>
       </Head>
       <div className={Styles.ButtonBody}>
-        <Nav_bar />
+        {/* <Nav_bar /> */}
         {/* <VcDataProvider VcData={VcData} > */}
-        <MenuList />
+        {/* <MenuList /> */}
         <PlayList />
         {/* </VcDataProvider> */}
       </div>

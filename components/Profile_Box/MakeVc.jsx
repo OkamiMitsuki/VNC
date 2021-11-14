@@ -28,6 +28,7 @@ const MakeVc = (props) => {
         justifyContent: 'flexStart',
         flexWrap: 'wrap',
         listStyle: 'none',
+        height: "100%",
         backgroundColor: "rgba(124, 135, 166, 0.40)",
         p: "2px",
         m: 0,
@@ -58,6 +59,7 @@ const MakeVc = (props) => {
                   margin: "2px",
                   height: "o.8em",
                   lineHeight: "1.0em",
+                  fontFamily: "LimoneB",
                 }}
               />
             </ListItem>
