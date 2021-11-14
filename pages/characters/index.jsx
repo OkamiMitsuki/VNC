@@ -4,6 +4,8 @@ import Nav_bar from "../components/Nav_bar/Nav_bar";
 import Profile_Box from "../components/Profile_Box/Profile_Box";
 import Styles from '../../public/css/style.module.css'
 import { VcData } from '../../datas/VcLamy'
+import VcArea from "../components/VcArea";
+import PlayList from "../../components/Playlist/PlayList";
 // import { VcDataProvider } from '../VcDataConText'
 
 // 'getStaticProps' only works in 'Page' components. It doesn't work in 'Layout' components.
@@ -19,9 +21,7 @@ import { VcData } from '../../datas/VcLamy'
 // }
 
 
-
 export default function Home() {
-  console.log(VcData)
   return (
     <div className="Styles.Container">
       <Head>
@@ -33,7 +33,7 @@ export default function Home() {
         <Nav_bar />
         {/* <VcDataProvider VcData={VcData} > */}
         <MenuList />
-        <Profile_Box VcData={VcData} />
+        <PlayList />
         {/* </VcDataProvider> */}
       </div>
     </div>

@@ -4,34 +4,38 @@ import 'react-h5-audio-player/lib/styles.css';
 import Styles from '../../public/css/style.module.css'
 import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react'
 import ExLoopButton from './ExLoop'
+import { VcData } from '../../datas/VcLamy'
+import Profile_Box from '../../pages/components/Profile_Box/Profile_Box';
+import VcArea from '../../pages/components/VcArea';
 
 //ボイスが置かれているディレクトリを指定
 const Vc_directory = "/Lamy/"
-
+let LoopMode = null;
 // メイン処理開始
 const PlayList = React.forwardRef((props, ref) => {
+
+  // state宣言
+  const [VcState, SetVcState] = useState({
+    currentMusicIndex: 0,
+    Category: "自己紹介",
+  });
   const [ExLoop, SetExLoop] = useState(0);
   // stateを展開
-  const VcState = props.VcState;
   const currentMusicIndex = VcState.currentMusicIndex;
-  const VcData = VcState.VcData;
-  const SetVcState = props.SetVcState;
+  const Category = VcState.Category;
 
   //Playerの制御情報取得
   const player = useRef();
-  useImperativeHandle(ref, () => ({
-    play() {
-      player.current.audio.current.currentTime = 0;
-      player.current.audio.current.play();
-    }
-  }));
-
+  const Play = () => {
+    player.current.audio.current.currentTime = 0;
+    player.current.audio.current.play();
+  }
 
   // PlayList用ステート書き換え関数
   // 前の曲へ　戻るボタンが押された時
   const handleClickPrevious = async (mes) => {
     let IsVcState =
-      currentMusicIndex === 0 ? VcData.length - 1 : currentMusicIndex - 1;
+      currentMusicIndex === 0 ? VcData[Category].length - 1 : currentMusicIndex - 1;
     await SetVcState({ ...VcState, currentMusicIndex: IsVcState })
     player.current.audio.current.play();
     return `result_${mes}`
@@ -39,10 +43,9 @@ const PlayList = React.forwardRef((props, ref) => {
   // 次の曲へ　次へボタンが押される　か　Loopモードが1の時で曲が終了した時
   const handleClickNext = async (mes) => {
     let IsVcState =
-      currentMusicIndex < VcData.length - 1 ? currentMusicIndex + 1 : 0;
+      currentMusicIndex < VcData[Category].length - 1 ? currentMusicIndex + 1 : 0;
     await SetVcState({ ...VcState, currentMusicIndex: IsVcState })
     player.current.audio.current.play();
-    console.log(player.current.audio.current.currentTime)
     return `result_${mes}`
   }
 
@@ -55,14 +58,20 @@ const PlayList = React.forwardRef((props, ref) => {
     player.current.audio.current.play();
   }
 
+  // ループの条件分岐
+  if (ExLoop == 0) { LoopMode = ""; }
+  else if (ExLoop == 1) { LoopMode = handleClickNext; }
+  else if (ExLoop == 2) { LoopMode = OneLoop; }
+  else { LoopMode = ""; }
 
-  console.log("PlayerIndex:", currentMusicIndex)
-  if (ExLoop == 0) {
-    return (
+
+  return (
+    <div>
+      <Profile_Box VcState={VcState} SetVcState={SetVcState} Play={Play} />
+      <VcArea VcState={VcState} SetVcState={SetVcState} Play={Play} />
       <div className={Styles.PlayList}>
         <div className={Styles.PlayTitle}>
-          <p className={Styles.PlayTxt}>{currentMusicIndex}/{VcData.length}</p>
-          <p className={Styles.PlayTxt}>{VcData[currentMusicIndex]["Title"]}</p>
+          <p className={Styles.PlayTxt}>{VcData[Category][currentMusicIndex]["Title"]}</p>
         </div>
         <AudioPlayer
           ref={player}
@@ -76,9 +85,10 @@ const PlayList = React.forwardRef((props, ref) => {
           showSkipControls={true}
           showJumpControls={false}
           loop={false}
-          src={Vc_directory + VcData[currentMusicIndex]["Src"]}
+          src={Vc_directory + VcData[Category][currentMusicIndex]["Src"]}
           onClickPrevious={handleClickPrevious}
           onClickNext={handleClickNext}
+          onEnded={LoopMode}
           customAdditionalControls={
             [
               <ExLoopButton onClick={LoopNext} LoopType={ExLoop} />,
@@ -86,72 +96,8 @@ const PlayList = React.forwardRef((props, ref) => {
           }
         />
       </div>
-    )
-  } else if (ExLoop == 1) {
-    return (
-      <div className={Styles.PlayList}>
-        <p>Index: {currentMusicIndex}</p>
-        <p>Name: {VcData[currentMusicIndex]["Title"]}</p>
-        <AudioPlayer
-          style={{
-            width: '300px'
-          }}
-          autoPlayAfterSrcChange={true}
-          layout="horizontal-reverse"
-          customProgressBarSection={[]}
-          showSkipControls={true}
-          showJumpControls={false}
-          loop={false}
-          src={Vc_directory + VcData[currentMusicIndex]["Src"]}
-          onClickPrevious={handleClickPrevious}
-          onClickNext={handleClickNext}
-          onEnded={handleClickNext}
-          customAdditionalControls={
-            [
-              <ExLoopButton onClick={LoopNext} LoopType={ExLoop} />,
-            ]
-          }
-          ref={player}
-        />
-      </div>
-    )
-    // 未使用
-  } else if (ExLoop == 2) {
-    return (
-      <div className={Styles.PlayList}>
-        <p>Index: {currentMusicIndex}</p>
-        <p>Name: {VcData[currentMusicIndex]["Title"]}</p>
-        <AudioPlayer
-          style={{
-            width: '300px'
-          }}
-          autoPlayAfterSrcChange={true}
-          layout="horizontal-reverse"
-          customProgressBarSection={[]}
-          showSkipControls={true}
-          showJumpControls={false}
-          loop={true}
-          src={Vc_directory + VcData[currentMusicIndex]["Src"]}
-          onClickPrevious={handleClickPrevious}
-          onClickNext={handleClickNext}
-          onEnded={OneLoop}
-          customAdditionalControls={
-            [
-              <ExLoopButton onClick={LoopNext} LoopType={ExLoop} />,
-            ]
-          }
-          ref={player}
-        />
-      </div>
-    )
-  } else {
-    return (
-      <p>ERROR</p>
-
-    )
-
-  }
-
-});
+    </div>
+  )
+})
 
 export default PlayList

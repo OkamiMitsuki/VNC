@@ -3,16 +3,16 @@
 import * as React from 'react';
 import Chip from '@mui/material/Chip';
 
-export default function VcButton({ id, src, title }) {
+export default function VcButton(props) {
+  const title = props.title
+  const size = props.size
   const handleClick = () => {
-    console.info({ id });
-    console.info({ src });
   };
   return (
     <Chip
       label={title}
       color="success"
-      size="small"
+      size={size}
       onClick={handleClick}
       sx={{
         margin: "2px",
