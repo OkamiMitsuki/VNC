@@ -193,8 +193,8 @@ export const VcData = {
     },
     {
       "Id": 3,
-      "Src": "いいよ.mp3",
-      "Title": "いいよ"
+      "Src": "いいよ(ささやき).mp3",
+      "Title": "いいよ(ささやき)"
     },
     {
       "Id": 4,
