@@ -1,4 +1,4 @@
-import Styles from '../../../public/css/style.module.css'
+import Styles from '../../public/css/style.module.css'
 
 export default function GetPrfImg() {
   return <video

@@ -5,8 +5,8 @@ import Styles from '../../public/css/style.module.css'
 import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react'
 import ExLoopButton from './ExLoop'
 import { VcData } from '../../datas/VcLamy'
-import Profile_Box from '../../pages/components/Profile_Box/Profile_Box';
-import VcArea from '../../pages/components/VcArea';
+import Profile_Box from '../Profile_Box/Profile_Box';
+import VcArea from '../VcArea';
 
 //ボイスが置かれているディレクトリを指定
 const Vc_directory = "/Lamy/"

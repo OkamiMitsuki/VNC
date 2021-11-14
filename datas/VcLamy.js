@@ -73,7 +73,7 @@ export const VcData = {
       "Src": "法定出会おう.mp3",
       "Title": "法定出会おう"
     }],
-  "萌系": [
+  "ラミフル": [
     {
       "Id": 0,
       "Src": "あ痛っ.mp3",
@@ -170,11 +170,7 @@ export const VcData = {
       "Src": "愛してる.mp3",
       "Title": "愛してる"
     },
-    {
-      "Id": 5,
-      "Src": "#",
-      "Title": "#"
-    }],
+  ],
   "ASMR": [
     {
       "Id": 0,
@@ -1079,12 +1075,7 @@ export const VcData = {
       "Id": 18,
       "Src": "闇の.mp3",
       "Title": "闇の"
-    },
-    {
-      "Id": "#",
-      "Src": "#",
-      "Title": "#"
-    }],
+    },],
   "ヤンデレ?": [
     {
       "Id": 0,

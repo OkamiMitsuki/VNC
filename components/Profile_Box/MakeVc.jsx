@@ -2,8 +2,8 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
 import Paper from '@mui/material/Paper';
-import { VcData } from '../../../datas/VcLamy'
-import Styles from '../../../public/css/style.module.css'
+import { VcData } from '../../datas/VcLamy'
+import Styles from '../../public/css/style.module.css'
 
 const ListItem = styled('li')(({ theme }) => ({
   margin: theme.spacing(0.5),
@@ -11,7 +11,6 @@ const ListItem = styled('li')(({ theme }) => ({
 
 const MakeVc = (props) => {
   // 変数整理
-  console.log(props.VcState);
   const SetVcState = props.SetVcState;
   const VcState = props.VcState;
   const Play = props.Play;
@@ -38,12 +37,14 @@ const MakeVc = (props) => {
 
       {VcData[Category].map((data) => {
         // クリックされた時の処理
-        const ChangeCurrentMusicIndex = () => {
+        const ChangeCurrentMusicIndex = async (mes) => {
           state = VcState
           state.currentMusicIndex = data.Id;
           state.Category = Category;
-          SetVcState({ ...VcState, state });
+          console.log({ state: state.Category })
+          await SetVcState({ ...VcState, state });
           Play();
+          return `result_${mes}`
         }
         return (
           <div key={data.Title}>

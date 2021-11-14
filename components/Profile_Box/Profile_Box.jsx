@@ -2,7 +2,7 @@ import GetPrfImg from "./GetPrfImg"
 import GetPrf from "./GetPrf"
 import PrfButtons from "./PrfButtons";
 import GetPrfLinks from "./GetPrfLinks";
-import Styles from '../../../public/css/style.module.css'
+import Styles from '../../public/css/style.module.css'
 
 const Profile_Box = (props) => {
   // const { VcState, SetVcState } = useVcDataContext();

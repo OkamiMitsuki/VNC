@@ -1,6 +1,6 @@
-import { names } from "../../../datas/names";
+import { names } from "../../datas/names";
 import IconButton from '@mui/material/IconButton';
-import Styles from '../../../public/css/style.module.css';
+import Styles from '../../public/css/style.module.css';
 import Stack from '@mui/material/Stack';
 import Image from 'next/image'
 

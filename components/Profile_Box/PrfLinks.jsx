@@ -1,6 +1,6 @@
 import GetPrfLinks from "./GetPrfLinks";
 import Stack from '@mui/material/Stack';
-import Styles from '../../../public/css/style.module.css';
+import Styles from '../../public/css/style.module.css';
 
 const PrfLinks = () => {
   return (

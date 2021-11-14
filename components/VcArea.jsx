@@ -1,5 +1,5 @@
 import MakeVc from "./Profile_Box/MakeVc";
-import { VcData } from "../../datas/VcLamy";
+import { VcData } from "../datas/VcLamy";
 
 const VcArea = (props) => {
   return (
