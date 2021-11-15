@@ -1,4 +1,6 @@
 import Head from "next/dist/shared/lib/head";
+import Link from "next/link";
+import Styles from '../public/css/style.module.css'
 
 export default function About() {
   return (
@@ -9,7 +11,11 @@ export default function About() {
         <title>Welcome file</title>
         <link rel="stylesheet" href="https://stackedit.io/style.css" />
       </Head>
-
+      <div className={Styles.About}>
+        <Link href="/LamyButton" >
+          <a >戻る</a>
+        </Link>
+      </div>
       <div className="stackedit__html"><h1>雪花ラミィ　誕生日おめでとう！</h1>
         <p>ラミィちゃんのおかげでここまでがんばれて<br />
           楽しい毎日が過ごせています。<br />
