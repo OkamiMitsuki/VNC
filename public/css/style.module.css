@@ -113,7 +113,10 @@ margin: 0.15em 8px;
    background-color: #88f;
   padding: 3px 9px;
  }
-
+ .ExLoopButton{
+   width: 35px;
+   height: 35px;
+ }
 .VcUpLoadForm{
   display: flex;
 }

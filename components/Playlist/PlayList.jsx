@@ -102,7 +102,7 @@ const PlayList = (props) => {
           onEnded={LoopMode}
           customAdditionalControls={
             [
-              <ExLoopButton onClick={LoopNext} LoopType={ExLoop} />,
+              <ExLoopButton onClick={LoopNext} LoopType={ExLoop} className={Styles.ExLoopButton} />,
             ]
           }
         />
