@@ -1,8 +1,9 @@
-import { MenuList } from "@material-ui/core";
 import Head from "next/dist/shared/lib/head";
-import Nav_bar from "../../components/Nav_bar/Nav_bar";
-import Styles from '../../public/css/style.module.css'
-import PlayList from "../../components/Playlist/PlayList";
+import Styles from '../public/css/style.module.css'
+import PlayList from "../components/Playlist/PlayList";
+import Link from "next/link";
+// import { MenuList } from "@material-ui/core";
+// import Nav_bar from "../components/Nav_bar/Nav_bar";
 // import { VcDataProvider } from '../VcDataConText'
 
 // 'getStaticProps' only works in 'Page' components. It doesn't work in 'Layout' components.
@@ -27,6 +28,11 @@ export default function Home() {
         <style>{'body { background: url(/patern.png)}'}</style>
       </Head>
       <div className={Styles.ButtonBody}>
+        <div className={Styles.About}>
+          <Link href="/about" >
+            <a >あとがき</a>
+          </Link>
+        </div>
         {/* <Nav_bar /> */}
         {/* <VcDataProvider VcData={VcData} > */}
         {/* <MenuList /> */}
