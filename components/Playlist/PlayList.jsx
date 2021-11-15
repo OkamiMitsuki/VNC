@@ -78,7 +78,7 @@ const PlayList = (props) => {
 
   return (
     <div>
-      <Profile_Box VcState={VcState} SetVcState={SetVcState} Play={Play} />
+      <Profile_Box VcState={VcState} SetVcState={SetVcState} Play={Play} className={Styles.Profile_Box} />
       <VcArea VcState={VcState} SetVcState={SetVcState} Play={Play} />
       <div className={Styles.PlayList}>
         <div className={Styles.PlayTitle}>
