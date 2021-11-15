@@ -1,77 +1,98 @@
 
-.PrfGrid {
-  margin: 80px auto 16px;
-  width: 80%;
-  height: 32vh;
-  max-height: 240px;
-  display: grid;
-  gap: 2px;
-  grid-template:
-  "PrfImg     Rubi        OsiMark"    min(4vh, 24px)
-  "PrfImg     Name        OsiMark"    min(8vh, 42px)
-  "PrfImg     LinkBar     LinkBar"    24px
-  "PrfImg     PrfButtons  PrfButtons" 2fr/
-  40%         50%         10%;
+  /*　画面サイズが480pxからはここを読み込む　*/
+  .PrfGrid {
+    margin: 80px auto 16px;
+    padding-bottom:40vh;
+    width: 80%;
+    height: 32vh;
+    max-height: 240px;
+    display: grid;
+    gap: 2px;
+    grid-template:
+    " PrfImg      PrfImg"     5fr
+    " Rubi        OsiMark"    min(4vh, 24px)
+    " Name        OsiMark"    min(8vh, 42px)
+    " LinkBar     LinkBar"    24px
+    " PrfButtons  PrfButtons" 2fr/
+          90%         10%;
+    }
+
+@media screen and (min-width:1024px) {
+  /* 1024pxまでの幅の場合に適応される */
+  .PrfGrid {
+    margin: 80px auto 16px;
+    width: 80%;
+    height: 32vh;
+    max-height: 240px;
+    display: grid;
+    gap: 2px;
+    grid-template:
+    "PrfImg     Rubi        OsiMark"    min(4vh, 24px)
+    "PrfImg     Name        OsiMark"    min(8vh, 42px)
+    "PrfImg     LinkBar     LinkBar"    24px
+    "PrfImg     PrfButtons  PrfButtons" 2fr/
+    40%         50%         10%;
   }
-  .PrfImg img{
-    width: auto;
-    height: 100%;
-    
 }
+.PrfImg img{
+  width: auto;
+  height: 100%;
+  }
 .PrfImg { 
-  grid-area: PrfImg;
-  display: flex;
+grid-area: PrfImg;
+display: flex;
 }
 .Rubi {
-   grid-area: Rubi; 
-   font-weight: bold;
-   align-items: center;
-   font-size: min(4vh, 24px);
-   line-height: min((4vh*0.85), 24px); 
-  padding-left: 16px;
-  }
+ grid-area: Rubi; 
+ font-weight: bold;
+ align-items: center;
+ font-size: min(4vh, 24px);
+ line-height: min((4vh*0.85), 24px); 
+padding-left: 16px;
+}
 .Name {
-   grid-area: Name;
-   font-weight: bold;
-   align-items: center;
-   font-size: min(8vh, 42px);
-   line-height: min((8vh*0.85), 42px);
-   padding-left: 16px;
+ grid-area: Name;
+ font-weight: bold;
+ align-items: center;
+ font-size: min(8vh, 42px);
+ line-height: min((8vh*0.85), 42px);
+ padding-left: 16px;
 }
 .OsiMark {
-   grid-area: OsiMark; 
-   display: flex;
-   justify-content: center;
-   font-size: min(12vh, 66px);
-   line-height: min((12vh*0.85), 66px);
-  }
+ grid-area: OsiMark; 
+ display: flex;
+ justify-content: center;
+ font-size: min(12vh, 66px);
+ line-height: min((12vh*0.85), 66px);
+}
 .PrfButtons {
-   grid-area: PrfButtons;
-   font-size: 1.2rem;
-   height: 100%;
-   padding-left: 16px;
-  }
+ grid-area: PrfButtons;
+ font-size: 1.2rem;
+ height: 100%;
+ padding-left: 16px;
+}
 .LinkBar {
-   grid-area: LinkBar; 
-   background:rgba(0, 0, 0, 0.05);
-   border-radius: 4px;
-   margin-left: 16px;
-  }
-  .Linkimg{
-    width: 16px;
-    height: 16px;
-  }
+ grid-area: LinkBar; 
+ background:rgba(0, 0, 0, 0.05);
+ border-radius: 4px;
+ margin-left: 16px;
+}
+.Linkimg{
+  width: 16px;
+  height: 16px;
+}
 
 .PrfTxt {
-  font-family: LimoneB;
-  font-style: normal;
-  height: 100%;
-  font-size: 0.85em;
-  color: #354243;
+font-family: LimoneB;
+font-style: normal;
+height: 100%;
+font-size: 0.85em;
+color: #354243;
 
-  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  margin: 0.15em 8px;
+text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+margin: 0.15em 8px;
 }
+
 
 .PlayList {
  width: 300px;
